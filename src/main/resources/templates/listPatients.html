@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patient List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <h1 class="fs-4">Hospital Management System</h1>
+        <ul class="nav nav-pills"></ul>
+    </header>
+</div>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Add New Patient</h2>
+    <form action="#" th:action="@{/create}" th:object="${patient}" method="post" class="mb-5">
+        <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" class="form-control" id="fullName" th:field="*{fullName}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="symptom">Symptom:</label>
+            <input type="text" class="form-control" id="symptom" th:field="*{symptom}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="medicalId">Medical ID:</label>
+            <input type="text" class="form-control" id="medicalId" th:field="*{medicalId}" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Patient</button>
+    </form>
+
+    <h1 class="mb-4">Patient List</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Symptom</th>
+            <th>Medical ID</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="patient : ${patients}">
+            <td th:text="${patient.id}">1</td>
+            <td th:text="${patient.fullName}">John Doe</td>
+            <td th:text="${patient.symptom}">Flu</td>
+            <td th:text="${patient.medicalId}">123456</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-body-secondary"></p>
+
+        <p class="col-md-4 mb-0 text-body-secondary">Powered by Le Do Nghiem</p>
+
+        <ul class="nav col-md-4 justify-content-end">
+        </ul>
+    </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
